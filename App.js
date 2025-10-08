@@ -1,26 +1,51 @@
-// In App.js in a new project
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 
-import * as React from 'react';
-import { View, Text } from 'react-native';
+import'react-native-gesture-handler';
+
+import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import 'react-native-gesture-handler';
-import login from './Screans/Login';
+
 import Home from './Screans/Home';
+import Login from './Screans/Login';
 
-const Stack = createStackNavigator();
+export default function App() {
 
-function MyStack() {
+  const Stack = createStackNavigator();
+
+function Mystack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Login" component={Login}
+      options={{
+        title: 'Iniciar Sesión',
+        headerTintColor: '#FFFFFF',
+        headerTitleAlign: 'center',
+        headerStyle: { backgroundColor: '#1976D2'}
+      }} />
+      <Stack.Screen name="Home" component={Home}
+        options={{
+          title: 'Inicio',
+          headerTintColor: '#FFFFFF',
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: '#1976D2'}
+        }} />
     </Stack.Navigator>
   );
-  return(
-    <NavigationContainer>
-      <MyStack/>
-    </NavigationContainer>
-  )
 }
 
+  return (
+    <NavigationContainer>
+      <Mystack />
+    </NavigationContainer>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
